@@ -1,10 +1,16 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 const App = () => (
-	<View>
-		<Text>Hello ToDo</Text>
-	</View>
+	<View style={styles.container} />
 );
+
+const styles = StyleSheet.create({
+	container: {
+		backgroundColor: '#273251',
+		flex: 1,
+		paddingHorizontal: 16
+	}
+});
 
 export default App;
