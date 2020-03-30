@@ -112,7 +112,6 @@
       "react/self-closing-comp": ["error"],
       "react/sort-prop-types": ["error"],
       // "react/state-in-constructor": ["error"],
-      "react-native/no-color-literals": ["error"],
       "react-native/no-inline-styles": ["error"],
       "react-native/no-raw-text": ["error"],
       "react-native/no-unused-styles": ["error"],
