@@ -1,16 +1,48 @@
 version: 2.1
 jobs:
   tests:
-    executor: rn/linux_js
+    working_directory: ~/rnToDo
+    docker:
+      - image: circleci/node:10
     steps:
-      - attach_workspace:
-          at: ~/rnToDo
-      - rn/yarn_install
+      - checkout
+
+      - restore_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: yarn install
+
+      - save_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - ~/.cache/yarn
+
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
       - run:
-          command: yarn test
-          name: Jest
-orbs:
-  react-native: react-native-community/react-native@3.0.1
+          name: jest tests
+          command: |
+            mkdir -p test-results/jest
+            yarn test
+          environment:
+            JEST_JUNIT_OUTPUT: test-results/jest/junit.xml
+
+      - persist_to_workspace:
+          root: ~/rnToDo
+          paths:
+            - node_modules
+
+      - store_test_results:
+          path: test-results
+
+      - store_artifacts:
+          path: test-results
 workflows:
   version: 2
   todoapp:
