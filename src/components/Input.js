@@ -1,13 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, TextInput } from 'react-native';
 
-const Input = () => (
+const Input = props => (<>
 	<TextInput
 		style={styles.container}
-		placeholder="What you have to do?"
+		placeholder={props.placeholder}
 		placeholderTextColor="#FFFFFF77"
 	/>
-);
+</>);
+
+Input.propTypes = {
+	placeholder: PropTypes.string
+};
+
+Input.defaultProps = {
+	placeholder: 'What do you have ToDo?'
+};
+
+Input.displayName = 'Input';
 
 const styles = StyleSheet.create({
 	container: {
