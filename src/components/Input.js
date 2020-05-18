@@ -13,6 +13,9 @@ const Input = props => {
 			placeholderTextColor="#FFFFFF77"
 			value={text}
 			onChangeText={text => setText(text)}
+			onSubmitEditing={() => {
+				setText('');
+			}}
 		/>
 	</>);
 };
