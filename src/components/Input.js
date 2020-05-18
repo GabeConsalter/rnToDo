@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, TextInput } from 'react-native';
 
-const Input = props => (<>
-	<TextInput
-		style={styles.container}
-		placeholder={props.placeholder}
-		placeholderTextColor="#FFFFFF77"
-	/>
-</>);
+const Input = props => {
+	const [text, setText] = useState('');
+
+	return (<>
+		<TextInput
+			style={styles.container}
+			placeholder={props.placeholder}
+			placeholderTextColor="#FFFFFF77"
+			value={text}
+			onChangeText={text => setText(text)}
+		/>
+	</>);
+};
 
 Input.propTypes = {
 	placeholder: PropTypes.string
