@@ -29,5 +29,16 @@ describe('Input component', () => {
 		expect(task).toMatchObject({
 			text: 'Test Task'
 		});
+
+		task = null;
+	});
+
+	it('should not send task when input is empty', () => {
+		if (textInput.props.value === '') {
+			fireEvent.submitEditing(textInput);
+
+			expect(task).toBe(null);
+			expect(textInput.props.placeholder).toBe('Hey, write something!');
+		}
 	});
 });
