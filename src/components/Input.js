@@ -7,6 +7,7 @@ const Input = props => {
 
 	return (<>
 		<TextInput
+			testID="textInput"
 			style={styles.container}
 			placeholder={props.placeholder}
 			placeholderTextColor="#FFFFFF77"
