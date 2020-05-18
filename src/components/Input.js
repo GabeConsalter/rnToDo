@@ -14,6 +14,8 @@ const Input = props => {
 			value={text}
 			onChangeText={text => setText(text)}
 			onSubmitEditing={() => {
+				props.onSendTask(text);
+
 				setText('');
 			}}
 		/>
@@ -21,6 +23,7 @@ const Input = props => {
 };
 
 Input.propTypes = {
+	onSendTask: PropTypes.func,
 	placeholder: PropTypes.string
 };
 
