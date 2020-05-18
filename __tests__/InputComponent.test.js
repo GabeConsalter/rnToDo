@@ -15,4 +15,10 @@ describe('Input component', () => {
 
 		expect(textInput.props.value).toBe('testing');
 	});
+
+	it('should erase text after submit', () => {
+		fireEvent.submitEditing(textInput);
+
+		expect(textInput.props.value).toBe('');
+	});
 });
