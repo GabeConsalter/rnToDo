@@ -3,17 +3,23 @@ import PropTypes from 'prop-types';
 import { StyleSheet, TextInput } from 'react-native';
 
 const Input = props => {
-	const [text, setText] = useState('');
+	const [text, setText] = useState(''),
+		[placeholder, setPlaceholder] = useState(props.placeholder);
 
 	return (<>
 		<TextInput
 			testID="textInput"
 			style={styles.container}
-			placeholder={props.placeholder}
+			placeholder={placeholder}
 			placeholderTextColor="#FFFFFF77"
 			value={text}
 			onChangeText={text => setText(text)}
 			onSubmitEditing={() => {
+				if (text === '') {
+					setPlaceholder('Hey, write something!');
+					return;
+				}
+
 				props.onSendTask(text);
 
 				setText('');
