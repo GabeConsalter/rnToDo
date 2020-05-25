@@ -26,4 +26,19 @@ class Task {
 	}
 }
 
+Task.schema = {
+	name: 'Task',
+	primaryKey: 'guid',
+	properties: {
+		guid: {
+			type: 'string',
+			indexed: true
+		},
+		text: 'string',
+		done: 'bool',
+		createdAt: 'date',
+		updatedAt: 'date?'
+	}
+};
+
 export default Task;
