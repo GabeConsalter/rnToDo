@@ -1,6 +1,5 @@
 import Utils from '../Utils';
 import getRealm from '../realm';
-import moment from 'moment';
 
 /**
  * Task
@@ -23,8 +22,8 @@ class Task {
 		this.guid = task.guid ? task.guid : Utils.guid();
 		this.text = task.text;
 		this.done = task.done ? task.done : false;
-		this.createdAt = task.createdAt ? task.createdAt : moment().toISOString();
-		this.updatedAt = moment(task.updatedAt).toISOString();
+		this.createdAt = task.createdAt ? task.createdAt : new Date().toISOString();
+		this.updatedAt = new Date(task.updatedAt).toISOString();
 	}
 
 	/**
