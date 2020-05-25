@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { List } from './components';
 import { Task } from './schemas';
@@ -6,6 +6,22 @@ import Input from './components/Input';
 
 const App = () => {
 	const [tasks, setTasks] = useState([]);
+
+	useEffect(() => {
+		loadTasks();
+	}, []);
+
+	/**
+	 * Load saved tasks in database
+	 *
+	 * @return {Tasks[]} saved tasks
+	 *
+	 * @author Gabriel Consalter
+	 * @since 1.0.0
+	 */
+	async function loadTasks() {
+		setTasks(await Task.getAll());
+	}
 
 	function addTask(text) {
 		const task = new Task({ text });
