@@ -28,6 +28,16 @@ describe('Task schema', () => {
 		expect(tasks).toEqual(expect.arrayContaining([taskOne, taskTwo, taskThree]));
 	});
 
+	it('should set task as done', async () => {
+		taskTwo.done = true;
+		await taskTwo.update();
+
+		expect(taskTwo.done).toBe(true);
+
+		const savedTaskTwo = await Task.get(taskTwo.guid);
+		expect(taskTwo.done).toEqual(savedTaskTwo.done);
+	});
+
 	it('should delete all tasks', async () => {
 		await Task.deleteAll();
 
