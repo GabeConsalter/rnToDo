@@ -2,8 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+/**
+ * Item component
+ *
+ * @param {*} props
+ * @prop {string} text
+ * @prop {bool} done=false
+ *
+ * @author Gabriel Consalter
+ * @since 1.0.0
+ */
 const Item = props => {
-	const [done, setDone] = useState(props.item.done),
+	const [done, setDone] = useState(props.done),
 		styles = StyleSheet.create({
 			btnStatus: {
 				backgroundColor: done ? '#348' : 'transparent',
@@ -32,7 +42,7 @@ const Item = props => {
 	return (
 		<TouchableOpacity style={styles.container}>
 			<View>
-				<Text style={styles.text}>{props.item.text}</Text>
+				<Text style={styles.text}>{props.text}</Text>
 			</View>
 			<TouchableOpacity
 				testID="btnStatus"
@@ -44,8 +54,12 @@ const Item = props => {
 };
 
 Item.propTypes = {
-	item: PropTypes.object.isRequired
+	done: PropTypes.bool,
+	text: PropTypes.string.isRequired
+};
 
+Item.defaultProps = {
+	done: false
 };
 
 Item.displayName = 'Item';
