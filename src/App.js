@@ -23,6 +23,14 @@ const App = () => {
 		setTasks(await Task.getAll());
 	}
 
+	/**
+	 * Add task to state and save it in database
+	 *
+	 * @param {string} text - The task description text
+	 *
+	 * @author Gabriel Consalter
+	 * @since 1.0.0
+	 */
 	function addTask(text) {
 		const task = new Task({ text });
 		task.save();
