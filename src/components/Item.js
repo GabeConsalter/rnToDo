@@ -46,7 +46,10 @@ const Item = props => {
 			</View>
 			<TouchableOpacity
 				testID="btnStatus"
-				onPress={() => setDone(!done)}
+				onPress={() => {
+					setDone(!done);
+					props.onSetDone(!done);
+				}}
 				style={styles.btnStatus}
 			/>
 		</TouchableOpacity>
@@ -55,6 +58,7 @@ const Item = props => {
 
 Item.propTypes = {
 	done: PropTypes.bool,
+	onSetDone: PropTypes.func,
 	text: PropTypes.string.isRequired
 };
 

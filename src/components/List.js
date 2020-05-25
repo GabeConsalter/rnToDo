@@ -8,7 +8,14 @@ const List = props => (
 		style={styles.container}
 		data={props.tasks}
 		renderItem={({ item: task }) => (
-			<Item item={task} />
+			<Item
+				text={task.text}
+				done={task.done}
+				onSetDone={done => {
+					task.done = done;
+					task.update();
+				}}
+			/>
 		)}
 	/>
 );
