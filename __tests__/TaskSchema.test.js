@@ -1,19 +1,29 @@
 import { Task } from '../src/schemas';
 
 describe('Task schema', () => {
-	const task = new Task({ text: 'Test Task' });
+	const taskOne = new Task({ text: 'Task One' });
+
+	it('should delete all tasks', async () => {
+		await taskOne.save();
+
+		await Task.deleteAll();
+
+		const tasks = await Task.getAll();
+
+		expect(tasks.length).toBe(0);
+	});
 
 	it('should create the task', () => {
-		expect(task).toBeInstanceOf(Task);
-		expect(task.text).toBe('Test Task');
-		expect(task.done).toBeFalsy();
+		expect(taskOne).toBeInstanceOf(Task);
+		expect(taskOne.text).toBe('Task One');
+		expect(taskOne.done).toBeFalsy();
 	});
 
 	it('should save and get the task', async () => {
-		await task.save();
+		await taskOne.save();
 
-		const savedTask = await Task.get(task.guid);
+		const savedTask = await Task.get(taskOne.guid);
 
-		expect(savedTask).toMatchObject(task);
+		expect(savedTask).toMatchObject(taskOne);
 	});
 });
