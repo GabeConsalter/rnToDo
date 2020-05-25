@@ -9,6 +9,7 @@ const App = () => {
 
 	function addTask(text) {
 		const task = new Task({ text });
+		task.save();
 
 		setTasks([...tasks, task]);
 	}
