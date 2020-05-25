@@ -1,7 +1,9 @@
 import { Task } from '../src/schemas';
 
 describe('Task schema', () => {
-	const taskOne = new Task({ text: 'Task One' });
+	const taskOne = new Task({ text: 'Task One' }),
+		taskTwo = new Task({ text: 'Task Two' }),
+		taskThree = new Task({ text: 'Task Three' });
 
 	it('should create the task', () => {
 		expect(taskOne).toBeInstanceOf(Task);
@@ -15,6 +17,15 @@ describe('Task schema', () => {
 		const savedTask = await Task.get(taskOne.guid);
 
 		expect(savedTask).toMatchObject(taskOne);
+	});
+
+	it('should get all tasks', async () => {
+		await taskTwo.save();
+		await taskThree.save();
+
+		const tasks = await Task.getAll();
+
+		expect(tasks).toEqual(expect.arrayContaining([taskOne, taskTwo, taskThree]));
 	});
 
 	it('should delete all tasks', async () => {
