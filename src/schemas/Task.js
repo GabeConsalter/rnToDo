@@ -28,7 +28,7 @@ class Task {
 	}
 
 	/**
-	 * Save a task
+	 * Save the task
 	 *
 	 * @author Gabriel Consalter
 	 * @since 1.0.0
@@ -37,6 +37,20 @@ class Task {
 		const realm = await getRealm();
 
 		realm.write(() => realm.create('Task', this));
+	}
+
+	/**
+	 * Update the task
+	 *
+	 * @private
+	 *
+	 * @author Gabriel Consalter
+	 * @since 1.0.0
+	 */
+	async update() {
+		const realm = await getRealm();
+
+		realm.write(() => realm.create('Task', this, true));
 	}
 
 	/**
