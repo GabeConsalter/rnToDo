@@ -53,6 +53,34 @@ class Task {
 
 		return task ? new Task({ ... JSON.parse(JSON.stringify(task)) }) : null;
 	}
+
+	/**
+	 * Get all tasks
+	 *
+	 * @author Gabriel Consalter
+	 * @since 1.0.0
+	 */
+	static async getAll() {
+		const realm = await getRealm(),
+			tasks = Array.from(realm.objects('Task'));
+
+		return tasks.map(task => new Task({
+			... JSON.parse(JSON.stringify(task))
+		}));
+	}
+
+	/**
+	 * Delete all
+	 *
+	 * @author Gabriel Consalter
+	 * @since 1.0.0
+	 */
+	static async deleteAll() {
+		const realm = await getRealm(),
+			tasks = realm.objects('Task');
+
+		realm.write(() => realm.delete(tasks));
+	}
 }
 
 Task.schema = {
