@@ -21,8 +21,16 @@ describe('List component', () => {
 		const { getByTestId } = render(<List tasks={await Task.getAll()} />),
 			list = getByTestId('list'),
 			tasks = list.props.data,
-			firstDone = tasks.findIndex(task => task.done);
+			firstDoneIndex = tasks.findIndex(task => task.done),
+			doneTasks = tasks.slice(firstDoneIndex),
+			undoneTasks = tasks.slice(0, doneTasks);
 
-		expect(tasks.slice(firstDone).findIndex(task => !task.done)).toBe(-1);
+		// done group test
+		expect(doneTasks.findIndex(task => !task.done)).toBe(-1);
+		expect(doneTasks.sort((a, b) => b.date - a.date)).toMath(doneTasks);
+
+		// undone group test
+		expect(undoneTasks.findIndex(task => task.done)).toBe(-1);
+		expect(undoneTasks.sort((a, b) => b.date - a.date)).toMath(undoneTasks);
 	});
 });
