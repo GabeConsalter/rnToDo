@@ -5,18 +5,19 @@ import { Task } from '../src/schemas';
 
 describe('List component', () => {
 	const taskOne = new Task({ text: 'Task One' }),
-		taskTwo = new Task({ text: 'Task Two' }),
-		taskThree = new Task({ text: 'Task Three' });
+		taskTwo = new Task({ text: 'Task Two', done: true }),
+		taskThree = new Task({ text: 'Task Three' }),
+		taskFour = new Task({ text: 'Task Four', done: true }),
+		taskFive = new Task({ text: 'Task Five' });
 
 	it('the tasks must be grouped by undone first and done after', async () => {
 		await Task.deleteAll();
 
+		taskFour.save();
 		taskOne.save();
-
-		taskTwo.done = true;
 		taskTwo.save();
-
 		taskThree.save();
+		taskFive.save();
 
 		const { getByTestId } = render(<List tasks={await Task.getAll()} />),
 			list = getByTestId('list'),
