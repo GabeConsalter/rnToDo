@@ -10,7 +10,7 @@ describe('List component', () => {
 		taskFour = new Task({ text: 'Task Four', done: true }),
 		taskFive = new Task({ text: 'Task Five' });
 
-	it('the tasks must be grouped by undone first and done after', async () => {
+	it('list must be grouped by undone tasks first and done tasks after', async () => {
 		await Task.deleteAll();
 
 		taskFour.save();
@@ -23,15 +23,8 @@ describe('List component', () => {
 			list = getByTestId('list'),
 			tasks = list.props.data,
 			firstDoneIndex = tasks.findIndex(task => task.done),
-			doneTasks = tasks.slice(firstDoneIndex),
-			undoneTasks = tasks.slice(0, doneTasks);
+			doneTasks = tasks.slice(firstDoneIndex);
 
-		// done group test
-		expect(doneTasks.findIndex(task => !task.done)).toBe(-1);
-		expect(doneTasks.sort((a, b) => b.date - a.date)).toMath(doneTasks);
-
-		// undone group test
-		expect(undoneTasks.findIndex(task => task.done)).toBe(-1);
-		expect(undoneTasks.sort((a, b) => b.date - a.date)).toMath(undoneTasks);
+		expect(doneTasks.find(task => !task.done)).toBe(undefined);
 	});
 });
