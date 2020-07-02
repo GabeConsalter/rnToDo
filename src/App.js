@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { List } from './components';
 import { Task } from './schemas';
 import Input from './components/Input';
@@ -40,6 +40,19 @@ const App = () => {
 
 	return (
 		<View style={styles.container}>
+			<View style={{
+				alignItems: 'center'
+			}}>
+				<Text style={{
+					paddingHorizontal: 8,
+					paddingVertical: 2,
+					backgroundColor: '#348',
+					borderRadius: 7,
+					color: '#FFF',
+					fontWeight: 'bold',
+					marginBottom: 16
+				}}>ToDo</Text>
+			</View>
 			<List
 				tasks={tasks}
 				onTaskPress={task => console.log(task)}

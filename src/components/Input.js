@@ -34,7 +34,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-	placeholder: 'What do you have ToDo?'
+	placeholder: 'O que você precisa fazer?'
 };
 
 Input.displayName = 'Input';

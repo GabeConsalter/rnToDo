@@ -61,14 +61,28 @@ describe('List component', () => {
 			undoneTasks = tasks.filter(task => !task.done),
 			doneTasks = tasks.filter(task => task.done);
 
-		let recentUpdatedAt = undoneTasks.shift().updatedAt;
-		undoneTasks.forEach(task => {
-			expect(new Date(recentUpdatedAt).getTime() - new Date(task.updatedAt).getTime()).toBeGreaterThan(0);
-		});
+		if (undoneTasks.length > 1) {
+			for (let i = 0; i < undoneTasks.length - 1; i++) {
+				if (!undoneTasks[i + 1]) {
+					break;
+				}
 
-		recentUpdatedAt = doneTasks.shift().updatedAt;
-		doneTasks.forEach(task => {
-			expect(new Date(recentUpdatedAt).getTime() - new Date(task.updatedAt).getTime()).toBeGreaterThan(0);
-		});
+				expect(
+					new Date(undoneTasks[i].updatedAt).getTime() - new Date(undoneTasks[i + 1].updatedAt).getTime()
+				).toBeGreaterThan(0);
+			}
+		}
+
+		if (doneTasks.length > 1) {
+			for (let i = 0; i < doneTasks.length - 1; i++) {
+				if (!doneTasks[i + 1]) {
+					break;
+				}
+
+				expect(
+					new Date(doneTasks[i].updatedAt).getTime() - new Date(doneTasks[i + 1].updatedAt).getTime()
+				).toBeGreaterThan(0);
+			}
+		}
 	});
 });

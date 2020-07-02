@@ -24,7 +24,7 @@ class Task {
 		this.text = task.text;
 		this.done = task.done ? task.done : false;
 		this.createdAt = task.createdAt ? task.createdAt : moment().toISOString();
-		this.updatedAt = task.updatedAt ? moment(task.updatedAt).toISOString() : null;
+		this.updatedAt = task.updatedAt ? task.updatedAt : moment().toISOString();
 	}
 
 	/**
@@ -50,7 +50,10 @@ class Task {
 	async update() {
 		const realm = await getRealm();
 
-		realm.write(() => realm.create('Task', this, true));
+		realm.write(() => realm.create('Task', {
+			...this,
+			updatedAt: moment().toISOString()
+		}, true));
 	}
 
 	/**
