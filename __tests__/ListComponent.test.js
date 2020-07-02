@@ -62,9 +62,13 @@ describe('List component', () => {
 			doneTasks = tasks.filter(task => task.done);
 
 		let recentUpdatedAt = undoneTasks.shift().updatedAt;
-		undoneTasks.forEach(task => expect(moment(recentUpdatedAt).diff(moment(task.updatedAt))).toBeGreaterThan(0));
+		undoneTasks.forEach(task => {
+			expect(new Date(recentUpdatedAt).getTime() - new Date(task.updatedAt).getTime()).toBeGreaterThan(0);
+		});
 
 		recentUpdatedAt = doneTasks.shift().updatedAt;
-		doneTasks.forEach(task => expect(moment(recentUpdatedAt).diff(moment(task.updatedAt))).toBeGreaterThan(0));
+		doneTasks.forEach(task => {
+			expect(new Date(recentUpdatedAt).getTime() - new Date(task.updatedAt).getTime()).toBeGreaterThan(0);
+		});
 	});
 });
