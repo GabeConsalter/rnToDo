@@ -1,0 +1,132 @@
+{
+  "env": {
+      "browser": true,
+      "es6": true,
+      "react-native/react-native": true,
+      "jest": true
+  },
+  "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+  ],
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+  },
+  "plugins": [
+      "import",
+      "react",
+      "react-native"
+  ],
+  "parser": "babel-eslint",
+  "settings": {
+      "react": {
+          "version": "detect"
+      }
+  },
+  "rules": {
+      "array-bracket-spacing": ["error"],
+      "arrow-body-style": ["error"],
+      "arrow-parens": ["error", "as-needed"],
+      "arrow-spacing": ["error"],
+      "block-spacing": ["error"],
+      "brace-style": ["error"],
+      "camelcase": ["error", {
+          "allow": [
+              "id_evento",
+              "^UNSAFE_"
+          ]
+      }],
+      "comma-dangle": ["error"],
+      "comma-spacing": ["error"],
+      "comma-style": ["error"],
+      "curly": ["error"],
+      "eol-last": ["error", "never"],
+      "import/first": "error",
+      "indent": ["error", "tab",
+          {
+              "MemberExpression": "off",
+              "SwitchCase": 1
+          }
+      ],
+      "jsx-quotes": ["error", "prefer-double"],
+      "keyword-spacing": ["error"],
+      "key-spacing": ["error"],
+      "linebreak-style": ["error", "unix"],
+      "max-len": ["error",
+          {
+              "code": 120,
+              "ignoreStrings": true,
+              "ignoreTemplateLiterals": true
+          }
+      ],
+      "new-cap": ["error"],
+      "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+      "no-array-constructor": ["error"],
+      "no-confusing-arrow": ["error", { "allowParens": true }],
+      "no-duplicate-imports": ["error"],
+      "no-else-return": ["error"],
+      "no-eval": ["error"],
+      "no-multi-spaces": ["error"],
+      "no-multiple-empty-lines": ["error" , { "max": 1 }],
+      "no-nested-ternary": ["error"],
+      "no-new-object": ["error"],
+      "no-param-reassign": ["error"],
+      "no-trailing-spaces": ["error"],
+      "no-underscore-dangle": ["error"],
+      "no-unneeded-ternary": ["error"],
+      "no-useless-constructor": ["error"],
+      "no-var": ["error"],
+      "no-whitespace-before-property": ["error"],
+      "object-curly-spacing": ["error", "always"],
+      "object-shorthand": ["error"],
+      "padded-blocks": ["error", "never"],
+      "prefer-arrow-callback": ["error"],
+      "prefer-const": ["error", { "ignoreReadBeforeAssign": true }],
+      "prefer-destructuring": ["error"],
+      "prefer-template": ["error"],
+      "quotes": ["error", "single"],
+      "quote-props": ["error", "as-needed"],
+      "react/jsx-boolean-value": ["error"],
+      "react/jsx-closing-bracket-location": ["error", {
+          "selfClosing": "line-aligned",
+          "nonEmpty": "after-props"
+      }],
+      "react/jsx-curly-spacing": ["error"],
+      "react/jsx-equals-spacing": ["error"],
+      "react/jsx-key": ["error"],
+      "react/jsx-max-props-per-line": ["error", { "when": "multiline" }],
+      "react/jsx-no-duplicate-props": ["error"],
+      "react/jsx-tag-spacing": ["error", {
+          "afterOpening": "never",
+          "beforeClosing": "never",
+          "beforeSelfClosing": "always",
+          "closingSlash": "never"
+      }],
+      "react/jsx-uses-react": ["error"],
+      "react/jsx-uses-vars": ["error"],
+      "react/jsx-wrap-multilines": ["error"],
+      "react/no-string-refs": ["error"],
+      "react/self-closing-comp": ["error"],
+      "react/sort-prop-types": ["error"],
+      // "react/state-in-constructor": ["error"],
+      "react-native/no-inline-styles": ["error"],
+      "react-native/no-raw-text": ["error"],
+      "react-native/no-unused-styles": ["error"],
+      "react-native/split-platform-components": ["off"],
+      "react-native/sort-styles": ["error"],
+      "semi": ["error"],
+      "sort-imports": ["error", {
+          "ignoreDeclarationSort": true
+      }],
+      "space-before-blocks": ["error"],
+      "space-in-parens": ["error"],
+      "space-infix-ops": ["error"],
+      "spaced-comment": ["error"],
+      "strict": ["off"],
+      "template-curly-spacing": ["error"]
+  }
+}

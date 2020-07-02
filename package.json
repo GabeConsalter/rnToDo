@@ -1,6 +1,6 @@
 {
   "name": "rnToDo",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -10,18 +10,22 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "moment": "^2.26.0",
     "react": "16.11.0",
-    "react-native": "0.62.0"
+    "react-native": "0.62.0",
+    "realm": "^6.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "@react-native-community/eslint-config": "^1.0.0",
+    "@testing-library/react-native": "^5.0.3",
     "babel-jest": "^25.2.4",
     "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.18.2",
     "jest": "^25.2.4",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.11.0"
+    "react-test-renderer": "^16.13.1"
   },
   "jest": {
     "preset": "react-native"
