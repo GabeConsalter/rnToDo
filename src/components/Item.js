@@ -13,31 +13,30 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
  * @since 1.0.0
  */
 const Item = props => {
-	const [done, setDone] = useState(props.done),
-		styles = StyleSheet.create({
-			btnStatus: {
-				backgroundColor: done ? '#348' : 'transparent',
-				borderColor: '#348',
-				borderRadius: 16,
-				borderWidth: 1,
-				height: 32,
-				width: 32
-			},
-			container: {
-				alignItems: 'center',
-				backgroundColor: `#000000${done ? '33' : '55'}`,
-				borderRadius: 7,
-				flexDirection: 'row',
-				justifyContent: 'space-between',
-				marginBottom: 8,
-				paddingHorizontal: 8,
-				paddingVertical: 16,
-				width: '100%'
-			},
-			text: {
-				color: `#FFFFFF${done ? '33' : 'FF'}`
-			}
-		});
+	const styles = StyleSheet.create({
+		btnStatus: {
+			backgroundColor: props.done ? '#348' : 'transparent',
+			borderColor: '#348',
+			borderRadius: 16,
+			borderWidth: 1,
+			height: 32,
+			width: 32
+		},
+		container: {
+			alignItems: 'center',
+			backgroundColor: `#000000${props.done ? '33' : '55'}`,
+			borderRadius: 7,
+			flexDirection: 'row',
+			justifyContent: 'space-between',
+			marginBottom: 8,
+			paddingHorizontal: 8,
+			paddingVertical: 16,
+			width: '100%'
+		},
+		text: {
+			color: `#FFFFFF${props.done ? '33' : 'FF'}`
+		}
+	});
 
 	return (
 		<TouchableOpacity style={styles.container}>
@@ -46,10 +45,7 @@ const Item = props => {
 			</View>
 			<TouchableOpacity
 				testID="btnStatus"
-				onPress={() => {
-					setDone(!done);
-					props.onSetDone(!done);
-				}}
+				onPress={() => props.onSetDone(!props.done)}
 				style={styles.btnStatus}
 			/>
 		</TouchableOpacity>
