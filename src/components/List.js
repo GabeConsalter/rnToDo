@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import { FlatList, StyleSheet } from 'react-native';
 import { Item } from '.';
