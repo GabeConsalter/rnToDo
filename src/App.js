@@ -40,18 +40,8 @@ const App = () => {
 
 	return (
 		<View style={styles.container}>
-			<View style={{
-				alignItems: 'center'
-			}}>
-				<Text style={{
-					paddingHorizontal: 8,
-					paddingVertical: 2,
-					backgroundColor: '#348',
-					borderRadius: 7,
-					color: '#FFF',
-					fontWeight: 'bold',
-					marginBottom: 16
-				}}>ToDo</Text>
+			<View style={styles.header}>
+				<Text style={styles.appTitle}>ToDo</Text>
 			</View>
 			<List
 				tasks={tasks}
@@ -65,10 +55,24 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+	appTitle: {
+		backgroundColor: '#348',
+		borderRadius: 7,
+		color: '#FFF',
+		fontWeight: 'bold',
+		marginBottom: 16,
+		paddingHorizontal: 8,
+		paddingVertical: 2
+	},
+
 	container: {
 		backgroundColor: '#273251',
 		flex: 1,
 		padding: 16
+	},
+
+	header: {
+		alignItems: 'center'
 	}
 });
 

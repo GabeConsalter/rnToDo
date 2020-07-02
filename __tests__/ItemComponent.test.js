@@ -1,6 +1,6 @@
 import React from 'react';
 import { Item } from '../src/components';
-import { fireEvent, render } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 
 describe('Item component', () => {
 	const { getByTestId } = render(
