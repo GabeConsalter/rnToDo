@@ -29,6 +29,7 @@ const List = props => {
 			data={tasks}
 			renderItem={({ item: task }) => (
 				<Item
+					key={task.guid}
 					text={`${task.text}`}
 					done={task.done}
 					onSetDone={async done => {
